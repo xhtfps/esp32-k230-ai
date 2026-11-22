@@ -1,0 +1,5 @@
+.worktrees/
+build/
+build_codex/
+build_codex_clean/
+build_test/

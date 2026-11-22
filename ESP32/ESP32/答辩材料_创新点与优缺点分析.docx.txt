@@ -1,0 +1,25 @@
+注意：由于环境中没有安装 pandoc，无法直接生成 .docx 文件。
+请按照以下步骤手动转换为 Word 文档：
+
+方法 1：使用 Typora（推荐）
+1. 下载安装 Typora: https://typora.io/
+2. 打开 "答辩材料_创新点与优缺点分析.md"
+3. 文件 -> 导出 -> Word (.docx)
+
+方法 2：使用 VS Code 插件
+1. 安装 "Markdown PDF" 或 "Markdown to DOCX" 插件
+2. 右键点击 .md 文件 -> 导出为 DOCX
+
+方法 3：使用在线工具
+1. 访问 https://pandoc.org/try/ 或 https://www.vertopal.com/
+2. 上传 .md 文件，转换为 .docx
+
+方法 4：直接复制粘贴
+1. 用 VS Code 或记事本打开 .md 文件
+2. 全选复制 (Ctrl+A, Ctrl+C)
+3. 粘贴到 Word 中 (Ctrl+V)
+4. 手动调整表格和格式
+
+---
+
+文件位置: d:\qianrushi\国赛\ESP32\答辩材料_创新点与优缺点分析.md

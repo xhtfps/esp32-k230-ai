@@ -1,0 +1,10 @@
+menu "Multimodal assistant peripherals"
+
+config ASSISTANT_PERIPHERAL_SELF_TEST
+    bool "Run audio peripheral self-test during startup"
+    default y
+    help
+        Play a quiet 250 ms test tone and log one INMP441 PCM frame at boot.
+        Disable this after the audio wiring has been validated.
+
+endmenu

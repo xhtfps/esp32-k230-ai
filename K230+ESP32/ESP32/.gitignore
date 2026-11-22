@@ -1,0 +1,7 @@
+.worktrees/
+build/
+build_codex/
+build_codex_clean/
+build_test/
+components/BSP/WIFI/wifi_config.h
+components/BSP/LLM/llm_config.h

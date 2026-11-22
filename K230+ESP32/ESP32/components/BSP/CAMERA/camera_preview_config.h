@@ -1,0 +1,5 @@
+#pragma once
+
+#define CAMERA_XCLK_HZ 20000000
+#define CAMERA_FRAME_BUFFER_COUNT 3
+#define CAMERA_USE_LATEST_FRAME 1

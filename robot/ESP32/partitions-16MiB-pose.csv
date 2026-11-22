@@ -1,0 +1,9 @@
+# ESP32-S3 16 MiB flash layout for optional local COCO Pose.
+# The coco_pose model occupies an 8 MiB data partition.
+# Name,      Type, SubType, Offset,   Size,    Flags
+nvs,         data, nvs,     0x9000,   0x6000,
+phy_init,    data, phy,     0xf000,   0x1000,
+factory,     app,  factory, 0x10000,  0x300000,
+vfs,         data, fat,     0x310000, 0x2F0000,
+coco_pose,   data, spiffs,  0x600000, 0x800000,
+storage,     data, spiffs,  0xE00000, 0x200000,

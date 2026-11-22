@@ -1,0 +1,38 @@
+conda activate robot-pose
+cd D:\robot\eyes（自己的文件目录）
+python -m pc_pose.main --team 1 `
+  --backend ultralytics `
+  --model yolo11n-pose.pt `
+  --source http://192.168.4.1:81/stream `
+  --esp32-url http://192.168.4.1/api/vision/pose
+
+conda activate robot-pose
+cd D:\robot\eyes
+python -m pc_pose.main --team 1 `
+  --backend ultralytics `
+  --model yolo11n-pose.pt `
+  --source http://192.168.4.1:81/stream `
+  --esp32-url http://192.168.4.1/api/vision/pose
+
+1 前进 → LA 0x31
+2 左脚撑   → LB 0x33
+3 举左手   → LC 0x32
+4 向左转   → LD 0x34
+5 向右转   → UP 0x39
+6 戒备  → DW 0x61
+7 防御  → LF 0x62
+8 出拳 → RG 0x63
+
+大字站 → RA 0x35
+举双手 → RB 0x37
+蹲下 → RC 0x36
+弓箭步 → RD 0x38
+叉腰 → L1 0x42
+敬礼 → L2 0x43
+
+官方音乐1 → 舞蹈1 → X  0x66
+官方音乐2 → 舞蹈2 → Y  0x64
+官方音乐3 → 舞蹈3 → A  0x65
+官方音乐4 → 舞蹈4 → B  0x41
+官方音乐5 → 舞蹈5 → R1 0x44
+自选音乐   → 舞蹈6 → R2 0x45

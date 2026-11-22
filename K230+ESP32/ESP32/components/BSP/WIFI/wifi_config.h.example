@@ -1,0 +1,4 @@
+#pragma once
+
+#define WIFI_SSID "在此填写热点名称"
+#define WIFI_PASSWORD "在此填写热点密码"
