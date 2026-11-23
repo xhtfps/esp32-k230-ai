@@ -1,8 +1,40 @@
+<div align="center">
+
 # ESP32-S3 + K230 边缘 AI 视觉工程
 
-ESP32-S3 与 K230 协作的边缘视觉项目合集：K230 侧跑图像采集与模型推理，ESP32 侧做通信、控制与上位机联调。
+**K230 负责看，ESP32 负责动：一套双板联调的接线、协议与调试记录**
 
-> 舞蹈机器人整机工程（`ESP32` 主控固件 / `eyes` 视觉 / `jx_firm` 机械固件 / 比赛文档）已独立为 [dance-robot-esp32](https://github.com/xhtfps/dance-robot-esp32)，本仓库不再保留 `robot/` 副本，避免同一项目两处维护。
+![platform](https://img.shields.io/badge/platform-ESP32--S3%20%2B%20K230-0b5cad?style=flat-square)
+![toolchain](https://img.shields.io/badge/toolchain-ESP--IDF%205.x-1f6feb?style=flat-square)
+![runtime](https://img.shields.io/badge/runtime-CanMV%20MicroPython-2496ed?style=flat-square)
+![license](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![last commit](https://img.shields.io/github/last-commit/xhtfps/esp32-k230-ai?style=flat-square)
+
+[联调要点](#3-联调要点) · [常见问题](#4-常见问题) · [全部仓库索引](https://github.com/xhtfps/xhtfps)
+
+</div>
+
+## 双板项目真正的难点
+
+不是模型能不能跑，而是**两块板子怎么对上**：谁先启动、帧头怎么定、丢帧了怎么定位、供电不够时为什么是 ESP32 先重启。这个仓库把 K230 侧脚本、ESP32 侧固件、协议文档放在一起，先跑通回环再加视觉。
+
+## 亮点
+
+- **两侧可独立验证**：K230 单独出帧率打印，ESP32 单独 `idf.py monitor`，各自正常后再联调，避免两头猜。
+- **协议有文档**：帧头/字段/波特率写在 `K230+ESP32/docs/`，改协议必须两端同改，不靠记忆。
+- **定位丢帧有套路**：先「固定字符串回环」，再切图像结果，能把问题锁在链路或算法一侧。
+- **整机另有归口**：舞蹈机器人整机已拆到 `dance-robot-esp32`，这里只留双板协作，不再两处维护。
+
+## 结构
+
+```mermaid
+flowchart LR
+  CAM["摄像头 / CIS"] --> K["K230<br/>采集 + 推理"]
+  K -->|"UART 帧协议"| E["ESP32-S3<br/>通信 + 控制"]
+  E --> M["执行机构 / 上位机"]
+  D["docs/ 协议·接线·调试记录"] -.-> K
+  D -.-> E
+```
 
 ## 1. 目录一览
 
@@ -59,3 +91,19 @@ idf.py -p COMx flash monitor
 - 原 `k230-esp32-vision-link`、`dancing-robot-multimodal` 两个仓库已并入本仓库（文件内容逐一比对），原仓库已删除。
 - 排除清单已压缩为 [`EXCLUDED_FILES.md`](EXCLUDED_FILES.md) 摘要（原 4.4 MB 逐文件 CSV 已删除，明细存本地）。
 - 第三方库与模型授权请单独确认。
+## 路线图
+
+- [x] 双板协议、接线表与调试记录整理入库
+- [x] 整机工程剥离到 `dance-robot-esp32`，消除重复维护
+- [ ] 补一版带时间戳的帧日志解析脚本，便于量化丢帧率
+- [ ] 把 UART 协议升级为带校验与重传的版本
+
+## 参与与反馈
+
+- 遇到问题请走 [Issue 模板](.github/ISSUE_TEMPLATE)，注明两侧固件版本与波特率。
+- 提 PR 前先读 [CONTRIBUTING.md](CONTRIBUTING.md)；安全问题按 [SECURITY.md](SECURITY.md) 私下反馈。
+- 如果这个仓库帮你省过时间，点个 ⭐ 是最省事的支持。
+
+## 许可证
+
+本仓自写代码以 [MIT](LICENSE) 分发；CanMV 固件、ESP-IDF 与所用模型按各自许可证使用。
