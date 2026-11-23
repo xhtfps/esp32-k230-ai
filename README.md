@@ -91,6 +91,17 @@ idf.py -p COMx flash monitor
 - 原 `k230-esp32-vision-link`、`dancing-robot-multimodal` 两个仓库已并入本仓库（文件内容逐一比对），原仓库已删除。
 - 排除清单已压缩为 [`EXCLUDED_FILES.md`](EXCLUDED_FILES.md) 摘要（原 4.4 MB 逐文件 CSV 已删除，明细存本地）。
 - 第三方库与模型授权请单独确认。
+
+## 大文件去哪了
+
+按 `SLIM-PLAN.md` 的口径做体积治理：以下文件**从 HEAD 移出、历史完整保留**。需要时按 `base_commit` 直链下载，不要重新提交进仓。
+
+| 文件 | 体积 | 取回 |
+| --- | --- | --- |
+| `SourceHanSerifSC-Regular.otf` | 23.3 MB | [blob@34f3f6b](https://github.com/xhtfps/esp32-k230-ai/blob/34f3f6bca7862f828d8aae78b338496f2d07b145/ESP32/lvgl/project/import/font/SourceHanSerifSC-Regular.otf) |
+
+完整台账见 [`notes/offload.json`](https://github.com/xhtfps/notes/blob/main/offload.json)，恢复命令 `python tools/fetch-assets.py --repo esp32-k230-ai`。
+
 ## 路线图
 
 - [x] 双板协议、接线表与调试记录整理入库
