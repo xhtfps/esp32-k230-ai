@@ -55,6 +55,6 @@ idf.py -p COMx flash monitor
 
 ## 5. 维护说明
 
-- 原 `k230-esp32-vision-link`、`dancing-robot-multimodal` 两个仓库已并入本仓库并归档（文件内容逐一比对，仅节点/IDE 配置类文件未复制）。
-- 排除清单见 `EXCLUDED_MANIFEST.csv`（较大，仅作记录，不参与编译）。
+- 原 `k230-esp32-vision-link`、`dancing-robot-multimodal` 两个仓库已并入本仓库（文件内容逐一比对），原仓库已删除。
+- 排除清单已嘲讽为 [`EXCLUDED_FILES.md`](EXCLUDED_FILES.md) 摘要（原 4.4 MB 逐文件 CSV 已删除，明细存本地）。
 - 第三方库与模型授权请单独确认。
